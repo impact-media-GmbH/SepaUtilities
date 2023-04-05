@@ -512,7 +512,7 @@ class SepaUtilities
      */
     public static function getDate($date = null, $inputFormat = 'd.m.Y')
     {
-        $dateTimeObj = !empty($date) ? DateTime::createFromFormat($inputFormat, $date) : false;
+        $dateTimeObj = empty($date) ? new DateTime() : DateTime::createFromFormat($inputFormat, $date);
 
         if($dateTimeObj === false)
             return false;
@@ -531,7 +531,7 @@ class SepaUtilities
      */
     public static function getDateWithOffset($workdayOffset, $today = null, $inputFormat = 'd.m.Y')
     {
-        $dateTimeObj = !empty($today) ? DateTime::createFromFormat($inputFormat, $today) : false;
+        $dateTimeObj = empty($today) ? new DateTime() : DateTime::createFromFormat($inputFormat, $today);
 
         if($dateTimeObj === false)
             return false;
