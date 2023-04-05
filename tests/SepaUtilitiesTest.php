@@ -5,7 +5,7 @@ require __DIR__ . '/../vendor/autoload.php';
 use AbcAeffchen\SepaUtilities\SepaUtilities;
 use function AbcAeffchen\SepaUtilities\easterDate;
 
-class SepaUtilitiesTest extends PHPUnit\Framework\TestCase
+class SepaUtilitiesTest extends PHPUnit_Framework_TestCase
 {
     public function testCheckCreditorIdentifier()
     {
@@ -97,7 +97,7 @@ class SepaUtilitiesTest extends PHPUnit\Framework\TestCase
             ['TR330006100519786457841326', 'TR33 0006 1005 1978 6457 8413 26']
         ];
 
-        foreach($testCases as [$expected, $input])
+        foreach(list ($expected, $input) = $testCases as $cases)
             static::assertSame('AD1200012030200359100100', SepaUtilities::checkIBAN('AD12 0001 2030 2003 5910 0100', $options));
     }
 
